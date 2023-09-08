@@ -6,7 +6,7 @@ import (
 	"path"
 	"strconv"
 
-	"testbottwo/client/e"
+	"bots/lib/e"
 )
 
 type Client struct {
@@ -35,8 +35,8 @@ func (c *Client) Updates(offset int, limit int) ([]Update, error) {
 }
 
 func (c *Client) doRequest(method string, query url.Values) ([]byte, error) {
-	defer func ()  {err = e.Wrap(errMsg, err)}()
 	const errMsg = "can't do request"
+	defer func ()  {err = e.Wrap(errMsg, err)}()
 	u := url.URL{
 		Scheme: "https",
 		Host:   c.host,
